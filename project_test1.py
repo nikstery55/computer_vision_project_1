@@ -83,7 +83,7 @@ noncar_images
 # In[7]:
 
 
-#자동차 정답 특성 추출
+#자동차 전체 정답 특성 추출
 start = time.time()
 for car_image in car_images:
     img = mpimg.imread(car_image)
@@ -97,48 +97,21 @@ end = time.time()
 print(f'{end - start:.4f}sec')
 
 
-# In[20]:
-
-
-car_images[1]
-#파일명에 대한 리스트 
-
-
-# In[21]:
-
-
-hog_car_image[1]
-#정답 리스트
-
-
-# In[22]:
-
-
-hog_car_feature[1]
-
-
-# In[23]:
-
-
-hog_car_feature_answer = hog_car_feature
-hog_car_feature_answer
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
 # In[8]:
 
 
+# 정답 레이블 생성
+hog_car_feature_answer = []
+x =1 
+hog_car_feature_answer = np.repeat(x, len(car_images))
+print(hog_car_feature_answer)
+len(hog_car_feature_answer)
+
+
+# In[9]:
+
+
+# 자동차 아님 전체 특성 추출
 start = time.time()
 for noncar_image in noncar_images:
     img = cv2.imread(noncar_image)
@@ -152,19 +125,18 @@ end = time.time()
 print(f'{end - start:.4f}sec')
 
 
-# In[ ]:
+# In[10]:
 
 
+# 자동차 오답 레이블 생성
+hog_noncar_feature_answer = []
+y =0 
+hog_noncar_feature_answer = np.repeat(y, len(noncar_images))
+print(hog_noncar_feature_answer)
+len(hog_noncar_feature_answer)
 
 
-
-# In[ ]:
-
-
-
-
-
-# In[9]:
+# In[11]:
 
 
 """
@@ -173,14 +145,14 @@ HOG
 """
 
 
-# In[10]:
+# In[12]:
 
 
 car_images_test = car_images[:10]
 #테스트 용 10개만 선택
 
 
-# In[11]:
+# In[13]:
 
 
 """
@@ -188,7 +160,7 @@ car이미지
 """
 
 
-# In[12]:
+# In[14]:
 
 
 for car_image_show in car_images_test:
@@ -213,7 +185,7 @@ for car_image_show in car_images_test:
     plt.imshow(hog_car_image_show, cmap='gray')
 
 
-# In[13]:
+# In[15]:
 
 
 """
@@ -221,14 +193,14 @@ notcar 이미지
 """
 
 
-# In[14]:
+# In[16]:
 
 
 noncar_images_test = noncar_images[:10]
 #테스트 용 10개만 선택
 
 
-# In[15]:
+# In[17]:
 
 
 for noncar_image_show in noncar_images_test:
@@ -252,7 +224,7 @@ for noncar_image_show in noncar_images_test:
     plt.imshow(hog_noncar_image_show, cmap='gray')
 
 
-# In[16]:
+# In[18]:
 
 
 """
